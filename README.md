@@ -67,6 +67,23 @@ result = safe_predictor(document="Untrusted document here...")
 
 **That's it!** Your application is now protected against prompt injection.
 
+### 🎬 Try the Interactive Demo
+
+See spotlighting in action with live LLM comparisons:
+
+```bash
+# Single model demo
+python demo.py --model openai/gpt-4o-mini
+
+# Compare multiple models
+python demo.py --models openai/gpt-4o-mini openai/gpt-3.5-turbo
+
+# Interactive mode with your own attacks
+python demo.py --interactive
+```
+
+📖 **[Full Demo Guide](DEMO.md)** - Complete walkthrough with examples
+
 ---
 
 ## 📊 Performance
