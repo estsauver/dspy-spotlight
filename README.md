@@ -3,7 +3,7 @@
 **Production-ready defense against indirect prompt injection attacks for DSPy applications.**
 
 [![Tests](https://img.shields.io/badge/tests-32%20passing-success)](.)
-[![Python](https://img.shields.io/badge/python-3.8+-blue)](.)
+[![Python](https://img.shields.io/badge/python-3.9+-blue)](.)
 [![DSPy](https://img.shields.io/badge/dspy-2.5+-orange)](https://dspy.ai)
 [![License](https://img.shields.io/badge/license-MIT-green)](.)
 
