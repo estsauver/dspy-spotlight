@@ -15,27 +15,27 @@ The `demo.py` script provides an interactive way to see spotlighting in action. 
 
 ```bash
 # Test with GPT-4o-mini
-python demo.py --model openai/gpt-4o-mini
+uv run demo.py --model openai/gpt-4o-mini
 
 # Test with different method
-python demo.py --model openai/gpt-4o-mini --method encoding
+uv run demo.py --model openai/gpt-4o-mini --method encoding
 ```
 
 ### Multi-Model Comparison
 
 ```bash
 # Compare across multiple models
-python demo.py --models openai/gpt-4o-mini openai/gpt-3.5-turbo anthropic/claude-3-5-sonnet-20241022
+uv run demo.py --models openai/gpt-4o-mini openai/gpt-3.5-turbo anthropic/claude-3-5-sonnet-20241022
 
 # Compare with encoding method
-python demo.py --models openai/gpt-4o-mini openai/gpt-4o --method encoding
+uv run demo.py --models openai/gpt-4o-mini openai/gpt-4o --method encoding
 ```
 
 ### Interactive Mode
 
 ```bash
 # Enter your own attack text
-python demo.py --interactive
+uv run demo.py --interactive
 ```
 
 ---
@@ -45,7 +45,7 @@ python demo.py --interactive
 ### Example 1: Default Attack (Email with Injection)
 
 ```bash
-python demo.py --model openai/gpt-4o-mini
+uv run demo.py --model openai/gpt-4o-mini
 ```
 
 **Output:**
@@ -98,7 +98,7 @@ TEST 2: WITH SPOTLIGHTING
 ### Example 2: Compare All Predefined Attacks
 
 ```bash
-python demo.py --model openai/gpt-4o-mini --all-examples
+uv run demo.py --model openai/gpt-4o-mini --all-examples
 ```
 
 This runs three different attack scenarios:
@@ -109,7 +109,7 @@ This runs three different attack scenarios:
 ### Example 3: Test Multiple Models
 
 ```bash
-python demo.py \
+uv run demo.py \
   --models openai/gpt-4o-mini openai/gpt-3.5-turbo \
   --method datamarking
 ```
@@ -129,7 +129,7 @@ openai/gpt-3.5-turbo          COMPROMISED ❌            Safe ✅               
 
 ```bash
 # Use predefined attack 0, 1, or 2
-python demo.py --model openai/gpt-4o-mini --attack 1
+uv run demo.py --model openai/gpt-4o-mini --attack 1
 ```
 
 Attack examples:
@@ -141,13 +141,13 @@ Attack examples:
 
 ```bash
 # Use Unicode private use area character
-python demo.py --model openai/gpt-4o-mini --method datamarking --marker $'\uE000'
+uv run demo.py --model openai/gpt-4o-mini --method datamarking --marker $'\uE000'
 ```
 
 ### Example 6: Interactive Mode
 
 ```bash
-python demo.py --interactive
+uv run demo.py --interactive
 ```
 
 Then follow the prompts:
@@ -205,16 +205,16 @@ Side-by-side results across all tested models
 
 ```bash
 # Compare different methods
-python demo.py --model openai/gpt-4o-mini --method datamarking
-python demo.py --model openai/gpt-4o-mini --method encoding
-python demo.py --model openai/gpt-4o-mini --method delimiting
+uv run demo.py --model openai/gpt-4o-mini --method datamarking
+uv run demo.py --model openai/gpt-4o-mini --method encoding
+uv run demo.py --model openai/gpt-4o-mini --method delimiting
 ```
 
 ### Model Selection
 
 ```bash
 # Find which model works best with spotlighting
-python demo.py --models \
+uv run demo.py --models \
   openai/gpt-3.5-turbo \
   openai/gpt-4o-mini \
   openai/gpt-4o \
@@ -225,7 +225,7 @@ python demo.py --models \
 
 ```bash
 # Test with your own attack vectors
-python demo.py --interactive
+uv run demo.py --interactive
 ```
 
 Then paste your custom attack text to see if spotlighting protects against it.
@@ -236,7 +236,7 @@ Then paste your custom attack text to see if spotlighting protects against it.
 # Compare all methods on same input
 for method in datamarking encoding delimiting; do
   echo "Testing $method..."
-  python demo.py --model openai/gpt-4o-mini --method $method
+  uv run demo.py --model openai/gpt-4o-mini --method $method
 done
 ```
 
@@ -273,22 +273,22 @@ The demo determines if an attack succeeded by checking if the response:
 
 2. **Start with datamarking** - It's the most reliable method
    ```bash
-   python demo.py --model openai/gpt-4o-mini --method datamarking
+   uv run demo.py --model openai/gpt-4o-mini --method datamarking
    ```
 
 3. **Use multiple models** to see consistency
    ```bash
-   python demo.py --models openai/gpt-4o-mini openai/gpt-4o
+   uv run demo.py --models openai/gpt-4o-mini openai/gpt-4o
    ```
 
 4. **Try different attacks** to see edge cases
    ```bash
-   python demo.py --model openai/gpt-4o-mini --all-examples
+   uv run demo.py --model openai/gpt-4o-mini --all-examples
    ```
 
 5. **Encoding is strongest** but requires capable models
    ```bash
-   python demo.py --model openai/gpt-4o --method encoding
+   uv run demo.py --model openai/gpt-4o --method encoding
    ```
 
 ---
@@ -302,8 +302,8 @@ The demo determines if an attack succeeded by checking if the response:
 **Solution:**
 ```bash
 # Check model name format
-python demo.py --model openai/gpt-4o-mini  # Correct
-python demo.py --model gpt-4o-mini         # Wrong (missing provider)
+uv run demo.py --model openai/gpt-4o-mini  # Correct
+uv run demo.py --model gpt-4o-mini         # Wrong (missing provider)
 
 # Set API key
 export OPENAI_API_KEY="your-key"
@@ -315,8 +315,7 @@ export OPENAI_API_KEY="your-key"
 
 **Solution:**
 ```bash
-source venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Attack still succeeds with spotlighting
@@ -342,7 +341,7 @@ After running the demo:
 ## 🎓 Example Session
 
 ```bash
-$ python demo.py --models openai/gpt-4o-mini openai/gpt-3.5-turbo --method datamarking
+$ uv run demo.py --models openai/gpt-4o-mini openai/gpt-3.5-turbo --method datamarking
 
 🔬 Multi-Model Comparison: Email with Embedded Attack
 ================================================================================
